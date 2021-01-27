@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game</title>
+</head>
+<body>
+    
+
+    <script>
+        let score = 0;
+         let promise = () => {
+             new Promise((response,reject) => {
+            let input = prompt("Guess a no. from 1 to 6");
+            let randomNumber = Math.ceil(Math.random() * 6);
+            // console.log(input);
+            // console.log(randomNumber);
+            if(input == null)
+            {
+                throw new Error("Please Enter a Number");
+            }
+            else if(input<1 || input>6)
+                {
+                    throw new Error("Enter a number from 1 to 6");
+                }
+            else if(isNaN(input))
+            {
+                throw new Error("Enter a Number");
+            }
+            
+            else{
+                response({
+                    "input": input,
+                    "randomNumber": randomNumber
+                });
+            }
+            // console.log("1");
+        })
+        .then((obj) => {
+            // console.log("2");
+            if(obj["input"] == obj["randomNumber"])
+            {
+                score += 2;
+            }
+            else if(obj["input"] == obj["randomNumber"]-1 || obj["input"] == obj["randomNumber"] + 1)
+            {
+                score += 1;
+            }
+            if(confirm("Do You Want To Continue?"))
+            {
+                promise();
+            }
+            else
+            {
+                alert("Your Score is : " + score);
+            }
+        }).catch((error) => {
+            alert(error);
+        });};
+        promise();
+    </script>
+</body>
+</html>
