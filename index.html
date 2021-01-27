@@ -42,10 +42,15 @@
             if(obj["input"] == obj["randomNumber"])
             {
                 score += 2;
+                alert("Great Guessing");
             }
             else if(obj["input"] == obj["randomNumber"]-1 || obj["input"] == obj["randomNumber"] + 1)
             {
                 score += 1;
+                alert("So Close");
+            }
+            else{
+                alert("Better Luck Next Time");
             }
             if(confirm("Do You Want To Continue?"))
             {
